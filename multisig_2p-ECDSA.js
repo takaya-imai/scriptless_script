@@ -3,7 +3,6 @@ const ec = new elliptic("secp256k1");
 const pjs = require("paillier-js");
 const BN = require('bn.js');
 const bigInt = require('big-integer');
-const assert = require('assert');
 
 
 
