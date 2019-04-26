@@ -17,7 +17,6 @@ const assert = require('assert');
 
 
 
-// an order of encryption for blockchain is the same for simplicity
 const order = new BN(ec.n);
 
 //
