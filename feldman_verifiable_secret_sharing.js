@@ -29,7 +29,7 @@ const order = bigInt(ec.n.toString());
 //  dealerCoeff
 //
 //
-const dealerPrvkey = bigInt(crypto.randomBytes(32).toString('hex'), 16);
+const dealerPrvkey = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
 const dealerCoeff = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
 
 
