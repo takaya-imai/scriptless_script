@@ -22,28 +22,19 @@ const order = bigInt(ec.n.toString());
 
 
 //
-// generating dealer secret, dealerPrvkey
+// generating a polynomial (dealer secret and coefficients)
 //
-
 // Dealer         Alice            Bob            Carol
 //  secret
-//
-const dealerPrvkey = bigInt(crypto.randomBytes(32).toString('hex'), 16);
-
-
-//
-// generating a polynomial
-//    2-of-3
-//
-// Dealer         Alice            Bob            Carol
 //  dealerCoeff
 //
 //
+const dealerPrvkey = bigInt(crypto.randomBytes(32).toString('hex'), 16);
 const dealerCoeff = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
 
 
 //
-// creating shares for index [1, 2, 3]
+// creating shares for index [1, 2, 3] and commitments
 //
 // Dealer             Alice            Bob            Carol
 //  (1, aliceShare)->
