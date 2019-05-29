@@ -10,7 +10,7 @@ const order = bigInt(ec.n.toString());
 
 //
 // AOS ring signature
-//    EC(secp256k1) + schnorr signature
+//    ECC(secp256k1) + schnorr signature
 // 
 
 ///////////
