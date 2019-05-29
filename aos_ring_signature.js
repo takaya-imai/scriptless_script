@@ -64,11 +64,11 @@ console.log("the signature is valid?:");
 console.log(verify(m, pubkeys, sig));
 
 const pubkeys2 = [bobPubkey, alicePubkey, carolPubkey];
-console.log("a order of pubkeys is different(reflection). the signature is valid for this pukeys?:");
+console.log("an order of pubkeys is different(reflection). the signature is valid for this pukeys?:");
 console.log(verify(m, pubkeys2, sig));
 
 const pubkeys3 = [carolPubkey, alicePubkey, bobPubkey];
-console.log("a order of pubkeys is different(cyclic). the signature is valid for this pubkeys?:");
+console.log("an order of pubkeys is different(cyclic). the signature is valid for this pubkeys?:");
 console.log(verify(m, pubkeys3, sig));
 
 function sign(m, pubkeys, signerKeyPair){
