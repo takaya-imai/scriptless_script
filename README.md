@@ -2,7 +2,7 @@
 
 * This is a sample code repository.
 
-# Execute Example
+# Execution Example
 
 ```
 $ node multisig_ecdsa.js

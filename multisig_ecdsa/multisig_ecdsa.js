@@ -13,6 +13,11 @@ const order = bigInt(ec.n.toString());
 
 //////////////
 //
+// Fast Multiparty Threshold ECDSA with Fast Trustless Setup
+//   https://dl.acm.org/citation.cfm?id=3243859
+//
+// This code is trusted setup version for implementation simplicity.
+//
 // setup
 //    2-of-3
 //
