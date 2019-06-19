@@ -4,8 +4,7 @@ const pjs = require("paillier-js");
 const BN = require('bn.js');
 const bigInt = require('big-integer');
 const assert = require('assert');
-const crypto = require("crypto");
-
+const randomBytes = require('randombytes');
 
 
 
@@ -33,7 +32,7 @@ console.log("[Dealer setups 2-of-3 multisig and send shares to Alice, Bob and Ca
 // Dealer         Alice            Bob            Carol
 //  secret
 //
-const dealerPrvkey = bigInt(crypto.randomBytes(32).toString('hex'), 16);
+const dealerPrvkey = bigInt(randomBytes(32).toString('hex'), 16);
 
 
 //
@@ -51,7 +50,7 @@ const dealerPrvkey = bigInt(crypto.randomBytes(32).toString('hex'), 16);
 //  bobShare                ->
 //  carolShare                              ->
 //
-const dealerCoeff = bigInt(crypto.randomBytes(32).toString('hex'), 16);
+const dealerCoeff = bigInt(randomBytes(32).toString('hex'), 16);
 
 const aliceShare = dealerPrvkey.add(dealerCoeff).mod(order); // for 1
 const bobShare = dealerPrvkey.add(bigInt(2).multiply(dealerCoeff)).mod(order); // for 2
@@ -113,11 +112,11 @@ console.log(e);
 //                 aliceK                          carolK
 //                 aliceGamma                      carolGamma
 //
-const aliceK = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
-const aliceGamma = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+const aliceK = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
+const aliceGamma = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
 
-const carolK = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
-const carolGamma = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+const carolK = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
+const carolGamma = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
 
 
 
@@ -274,7 +273,7 @@ function multiplicativeToAdditive(a, b, order){
     //                   betaDash
     //          <-       cB
     //
-    let betaDash = bigInt(crypto.randomBytes(32).toString('hex'), 16);
+    let betaDash = bigInt(randomBytes(32).toString('hex'), 16);
     let cB = pubkeyPjs.addition(
         pubkeyPjs.multiply(
             cA,
