@@ -3,7 +3,7 @@ const ec = new elliptic("secp256k1");
 const BN = require('bn.js');
 const bigInt = require('big-integer');
 const assert = require('assert');
-const crypto = require("crypto");
+const randomBytes = require('randombytes');
 
 
 
@@ -29,8 +29,10 @@ const order = bigInt(ec.n.toString());
 //  dealerCoeff
 //
 //
-const dealerPrvkey = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
-const dealerCoeff = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+//const dealerPrvkey = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+const dealerPrvkey = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
+//const dealerCoeff = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+const dealerCoeff = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
 
 
 //
