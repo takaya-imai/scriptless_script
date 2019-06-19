@@ -1,8 +1,9 @@
 const elliptic = require("elliptic").ec;
 const ec = new elliptic("secp256k1");
-const BN = require('bn.js');
-const bigInt = require('big-integer');
-const crypto = require("crypto");
+const BN = require("bn.js");
+const bigInt = require("big-integer");
+const randomBytes = require("randombytes");
+const sha256 = require("js-sha256");
 
 
 
@@ -75,15 +76,18 @@ function sign(m, pubkeys, signerKeyPair){
     // "pubkeys" contains public key of Alice, Bob and Carol.
     // a signer is Bob in this case.
 
-    let u = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+    //let u = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+    let u = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
     let e2 = hash(m, ec.keyFromPrivate(u.toString(16)).getPublic());
 
-    let s2 = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+    //let s2 = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+    let s2 = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
     let s2Pubkey = ec.keyFromPrivate(s2.toString(16)).getPublic();
     let e2K = pubkeys[2].mul(new BN(e2, 16));
     let e0 = hash(m, s2Pubkey.add(e2K));
 
-    let s0 = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+    //let s0 = bigInt(crypto.randomBytes(32).toString('hex'), 16).mod(order);
+    let s0 = bigInt(randomBytes(32).toString('hex'), 16).mod(order);
     let s0Pubkey = ec.keyFromPrivate(s0.toString(16)).getPublic();
     let e0K = pubkeys[0].mul(new BN(e0, 16));
     let e1 = hash(m, s0Pubkey.add(e0K));
@@ -127,5 +131,6 @@ function verify(m, pubkeys, sig){
 
 function hash(m, pubkey){
     let mHex = new BN(m, 16);
-    return crypto.createHash('sha256').update(bigInt(pubkey.encode('hex'), 16).add(bigInt(mHex, 16)).toString(16)).digest("hex");
+    //return crypto.createHash('sha256').update(bigInt(pubkey.encode('hex'), 16).add(bigInt(mHex, 16)).toString(16)).digest("hex");
+    return sha256.create().update(bigInt(pubkey.encode('hex'), 16).add(bigInt(mHex, 16)).toString(16)).hex();
 };
