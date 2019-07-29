@@ -151,10 +151,10 @@ const carolDelta = carolK.multiply(carolGamma).add(alpha21).add(beta12);
 
 const delta = aliceDelta.add(carolDelta).mod(order);
 
+// check k * gamma = aliceDelta + carolDelta
+// it is not needed actually
 const k = aliceK.add(carolK);
 const gamma = aliceGamma.add(carolGamma);
-
-// k * gamma = aliceDelta + carolDelta
 assert(k.multiply(gamma).mod(order).value == delta.value);
 
 
@@ -182,7 +182,7 @@ const aliceOmega = aliceLambda.multiply(aliceShare);
 const carolOmega = carolLambda.multiply(carolShare).mod(order).add(order); // add(order) makes carolOmega positive
 
 // check that lambdas meet lagurange interpolation equation
-// it is not needed practically
+// it is not needed actually
 assert(aliceOmega.add(carolOmega).mod(order).value.toString(16) == dealerPrvkey.mod(order).value.toString(16));
 
 
