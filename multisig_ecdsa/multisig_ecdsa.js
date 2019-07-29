@@ -161,7 +161,7 @@ assert(k.multiply(gamma).mod(order).value == delta.value);
 
 
 //
-// 3.2, k and private key(omega)
+// 3.2, k and share(omega)
 //
 //
 // Dealer         Alice            Bob            Carol
