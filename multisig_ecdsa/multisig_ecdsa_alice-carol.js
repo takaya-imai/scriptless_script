@@ -5,6 +5,7 @@ const BN = require('bn.js');
 const bigInt = require('big-integer');
 const assert = require('assert');
 const randomBytes = require('randombytes');
+const sha256 = require("js-sha256");
 
 
 
@@ -97,7 +98,7 @@ console.log("[unlock by Alice and Carol]\n");
 //                 m               <->             m
 //
 const m = "Satoshi Nakamoto";
-const e = lsb(m);
+const e = lsbToInt(m);
 console.log("message: " + m);
 console.log(e);
 
@@ -151,15 +152,15 @@ const carolDelta = carolK.multiply(carolGamma).add(alpha21).add(beta12);
 
 const delta = aliceDelta.add(carolDelta).mod(order);
 
-// check k * gamma = aliceDelta + carolDelta
-// it is not needed actually
 const k = aliceK.add(carolK);
 const gamma = aliceGamma.add(carolGamma);
+
+// k * gamma = aliceDelta + carolDelta
 assert(k.multiply(gamma).mod(order).value == delta.value);
 
 
 //
-// 3.2, k and share(omega)
+// 3.2, k and private key(omega)
 //
 //
 // Dealer         Alice            Bob            Carol
@@ -182,7 +183,7 @@ const aliceOmega = aliceLambda.multiply(aliceShare);
 const carolOmega = carolLambda.multiply(carolShare).mod(order).add(order); // add(order) makes carolOmega positive
 
 // check that lambdas meet lagurange interpolation equation
-// it is not needed actually
+// it is not needed practically
 assert(aliceOmega.add(carolOmega).mod(order).value.toString(16) == dealerPrvkey.mod(order).value.toString(16));
 
 
@@ -241,7 +242,7 @@ const sig = {r: r.toString(16), s: s.toString(16)}; // DER format in the case of
 console.log("signature");
 console.log(sig);
 
-console.log(ec.keyFromPublic(multiPubkey).verify(m, sig));
+console.log(ec.keyFromPublic(multiPubkey).verify(lsbToStr(m), sig));
 
 
 // returns alpha and beta as additive
@@ -303,6 +304,16 @@ function hDash(pubkey){
 // transform m to e by LSB
 function lsb(m){
     let mHex = new BN(m, 16);
+    let delta = mHex.byteLength() * 8 - ec.n.bitLength();
+    return bigInt(mHex.ushrn(delta > 0 ? delta : 0).toString(16), 16);
+};
+function lsbToStr(m){
+    let mHex = new BN(sha256.create().update(m).hex());
+    let delta = mHex.byteLength() * 8 - ec.n.bitLength();
+    return mHex.ushrn(delta > 0 ? delta : 0).toString(16);
+};
+function lsbToInt(m){
+    let mHex = new BN(sha256.create().update(m).hex());
     let delta = mHex.byteLength() * 8 - ec.n.bitLength();
     return bigInt(mHex.ushrn(delta > 0 ? delta : 0).toString(16), 16);
 };
