@@ -302,11 +302,6 @@ function hDash(pubkey){
 };
 
 // transform m to e by LSB
-function lsb(m){
-    let mHex = new BN(m, 16);
-    let delta = mHex.byteLength() * 8 - ec.n.bitLength();
-    return bigInt(mHex.ushrn(delta > 0 ? delta : 0).toString(16), 16);
-};
 function lsbToStr(m){
     let mHex = new BN(sha256.create().update(m).hex());
     let delta = mHex.byteLength() * 8 - ec.n.bitLength();
