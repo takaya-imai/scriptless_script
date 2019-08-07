@@ -131,6 +131,5 @@ function verify(m, pubkeys, sig){
 
 function hash(m, pubkey){
     let mHex = new BN(m, 16);
-    //return crypto.createHash('sha256').update(bigInt(pubkey.encode('hex'), 16).add(bigInt(mHex, 16)).toString(16)).digest("hex");
     return sha256.create().update(bigInt(pubkey.encode('hex'), 16).add(bigInt(mHex, 16)).toString(16)).hex();
 };
