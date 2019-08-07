@@ -2,6 +2,10 @@
 
 * This is a sample code repository.
 
+# DISCLAIMER
+
+* USE CODES IN THIS REPOSITORY AT YOUR OWN RISK.
+
 # Execution Example
 
 ```
@@ -60,7 +64,3 @@ signature
    '7680d857d80ee713d7c49edab2dba7ab969431497e796fdbc14aa06e509d1e2a' }
 true
 ```
-
-# DISCLAIMER
-
-* USE CODES IN THIS REPOSITORY AT YOUR OWN RISK.
