@@ -223,7 +223,8 @@ const bobOmega = bobLambda.multiply(bobShare).add(order); // add(order) makes bo
 
 // check that lambdas meet lagurange interpolation equation
 // it is not needed practically
-assert(aliceOmega.add(bobOmega).mod(order).value.toString(16) == alicePrvkey.add(bobPrvkey).add(carolPrvkey).mod(order).value.toString(16));
+const prvkey = alicePrvkey.add(bobPrvkey).add(carolPrvkey).mod(order);
+assert(aliceOmega.add(bobOmega).mod(order).value.toString(16) == prvkey.value.toString(16));
 
 
 
