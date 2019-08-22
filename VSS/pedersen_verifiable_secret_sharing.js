@@ -120,11 +120,30 @@ console.log();
 //
 // Bob checks the share and commitments which Dealer sent
 //
+const bobShareSum = ec.keyFromPrivate(bobShare.value.toString(16)).getPublic()
+                        .add(h.mul(bobShareDash.value.toString(16)));
+const bobDealerCommitmentSum = dealerCommit0.add(dealerCommit1.mul(2));
+console.log("public key from Bob's share");
+console.log(bobShareSum);
+console.log("public key which Bob calculates from dealer's commtments");
+console.log(bobDealerCommitmentSum);
+assert(bobShareSum.getX().toString() == bobDealerCommitmentSum.getX().toString());
+assert(bobShareSum.getY().toString() == bobDealerCommitmentSum.getY().toString());
 
 console.log();
 
 //
 // Carol checks the share and commitments which Dealer sent
+//
+const carolShareSum = ec.keyFromPrivate(carolShare.value.toString(16)).getPublic()
+                        .add(h.mul(carolShareDash.value.toString(16)));
+const carolDealerCommitmentSum = dealerCommit0.add(dealerCommit1.mul(3));
+console.log("public key from Carol's share");
+console.log(carolShareSum);
+console.log("public key which Carol calculates from dealer's commtments");
+console.log(carolDealerCommitmentSum);
+assert(carolShareSum.getX().toString() == carolDealerCommitmentSum.getX().toString());
+assert(carolShareSum.getY().toString() == carolDealerCommitmentSum.getY().toString());
 
 //
 //////////////
