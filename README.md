@@ -66,34 +66,32 @@ true
 ```
 
 ```
-$ node scriptless_script/multisig_ecdsa/DKOSS19/2of3.js
+$ node multisig_ecdsa_DKOSS19_2of3.js
 [Each players setups 2-of-3 multisig and send shares to Alice, Bob and Carol each other]
 
 alice share:
-modify directory name
-6116f5eca969f409e738906f138cd379b07521290d381c496e9cf75df323f1cf
+f6b6e2a9f9b76590eda5f84a63dc2125493b92fdf9c6e468fa198f027360d3ab
 bob share:
-9fecc6d47acabcf92334813d0d75a1c131e6c8416e43cc44c9000944bda62686
+1c810bca459f675b3f3c93b76511887351cd2f21b8cf4c019ead03d69fd9c512
 carol share:
-dec297bc4c2b85e85f30720b075e7008b3586f59cf4f7c4023631b2b88285b3d
+424b34ea9187692590d32f246646efc0150da82c272053d60312d7379c88f7ba
 
 [Pay to the multi-sig addr]
 
 multisig publickey:
-<EC Point x: a038d2088706dcdaa39eb789f01378bc1e8aa8fc5ca18b47b74b1ef8ee1f3634 y: 1096228af73b8b5103daafd4b5d96a4e666ba1458293a66a792ee6f29c5680b1>
+<EC Point x: b856dbf37beb07547ecd367f08130c14bedbe47d0af3536268d196056734ef3d y: bddee8e3f618049f87aa7eb8cdef569d1fa243e9937ac687291e16f7159aec44>
 
 [unlock by Alice and Bob]
 
 message: Satoshi Nakamoto
-modify file names
 { [Number: 1.0142666630799874e+64]
   value:
    10142666630799874325011227401619526506411153385155426573377048844n }
 signature
 { r:
-   '525fcb90b6a7cde913229c84b085d3a235cbe79165c649115629f35d4cf5f6df',
+   'fc3da3ebd99d6e8d078f29cd628153fa2e6a56ec7954b165a855fe6356feda94',
   s:
-   '79800786dfa0bbaebd5cb4abdaf66251931667623b7a93a3fc0c349b2751e92b' }
+   'ba966b227a6951d9a434f264a75e7cd24c24ea36ee682ed39e5739c6e8314be0' }
 
 signature is valid?
 true
