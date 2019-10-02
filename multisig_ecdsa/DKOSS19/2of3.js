@@ -17,7 +17,7 @@ const order = bigInt(ec.n.toString());
 // Securing DNSSEC Keys via Threshold ECDSA From Generic MPC
 //   https://eprint.iacr.org/2019/889
 //
-// This code is a version without a trusted setup.
+// This code is a version without multiparty secret caluculation to genearte Beaver triples
 //
 // setup
 //    2-of-3
@@ -128,7 +128,7 @@ console.log(multiPubkey);
 //
 // generating Beaver triples on Fp (Finite group with the same prime order as ec.n)
 //
-//  Beaver triples are given by hand not Secret Calculation in the first code for simplicity.
+//  Beaver triples are given by hand not Multiparty Secret Calculation in the first code for simplicity.
 //
 // Alice            Bob            Carol
 //  aliceBeaverA     bobBeaverA
@@ -216,7 +216,7 @@ console.log(e);
 //
 // 2, calcilating aliceShareDash and bobShareDash
 //
-//  aliceShareDash and bobShareDash are given by hand not Secret Calculation in the first code for simplicity.
+//  aliceShareDash and bobShareDash are given by hand not Multiparty Secret Calculation in the first code for simplicity.
 //
 // Alice            Bob            Carol
 //  aliceShareDash   bobShareDash
