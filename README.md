@@ -38,7 +38,7 @@ false
 ```
 
 ```
-$ node multisig_ecdsa.js
+$ node scriptless_script/multisig_ecdsa/GG18/alice-bob_2of3.js
 [Dealer setups 2-of-3 multisig and send shares to Alice, Bob and Carol]
 
 alice share:
@@ -63,4 +63,48 @@ signature
   s:
    '7680d857d80ee713d7c49edab2dba7ab969431497e796fdbc14aa06e509d1e2a' }
 true
+```
+
+```
+$ node scriptless_script/multisig_ecdsa/DKOSS19/2of3.js
+[Each players setups 2-of-3 multisig and send shares to Alice, Bob and Carol each other]
+
+alice share:
+modify directory name
+6116f5eca969f409e738906f138cd379b07521290d381c496e9cf75df323f1cf
+bob share:
+9fecc6d47acabcf92334813d0d75a1c131e6c8416e43cc44c9000944bda62686
+carol share:
+dec297bc4c2b85e85f30720b075e7008b3586f59cf4f7c4023631b2b88285b3d
+
+[Pay to the multi-sig addr]
+
+multisig publickey:
+<EC Point x: a038d2088706dcdaa39eb789f01378bc1e8aa8fc5ca18b47b74b1ef8ee1f3634 y: 1096228af73b8b5103daafd4b5d96a4e666ba1458293a66a792ee6f29c5680b1>
+
+[unlock by Alice and Bob]
+
+message: Satoshi Nakamoto
+modify file names
+{ [Number: 1.0142666630799874e+64]
+  value:
+   10142666630799874325011227401619526506411153385155426573377048844n }
+signature
+{ r:
+   '525fcb90b6a7cde913229c84b085d3a235cbe79165c649115629f35d4cf5f6df',
+  s:
+   '79800786dfa0bbaebd5cb4abdaf66251931667623b7a93a3fc0c349b2751e92b' }
+
+signature is valid?
+true
+Alice broadcasts tx with one '2 of 3' valid signature
+```
+
+# Environment
+
+* nodejs
+
+```
+$ node -v
+v10.8.0
 ```
