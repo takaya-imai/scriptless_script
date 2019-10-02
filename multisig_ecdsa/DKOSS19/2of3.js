@@ -126,7 +126,7 @@ console.log(multiPubkey);
 
 // Preprocessing
 //
-// generating Beaver triples on Fp (Finite group with the same prime order as ec.n)
+// 1, generating Beaver triples on Fp (Finite group with the same prime order as ec.n)
 //
 //  Beaver triples are given by hand not Multiparty Secret Calculation in the first code for simplicity.
 //
