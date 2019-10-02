@@ -160,9 +160,32 @@ assert(aliceBeaverC.add(bobBeaverC).mod(order).value = aliceBeaverA.add(bobBeave
 const beaverC = aliceBeaverC.add(bobBeaverC).mod(order);
 
 
+console.log();
+
+
+//////////////
+//
+// unlock by alice and bob
+//
+//////////////
+
+console.log("[unlock by Alice and Bob]\n");
 
 //
-// 3, setting each k and calculating secret shared 1/k which is 1/(aliceK + bobK).
+// 1, setting a message m (sighash in the case of BTC)
+//
+// Alice            Bob            Carol
+//  m       <->      m
+//
+const m = "Satoshi Nakamoto";
+const e = lsbToInt(m);
+console.log("message: " + m);
+console.log(e);
+
+
+
+//
+// 2, setting each k and calculating secret shared 1/k which is 1/(aliceK + bobK).
 //
 // Alice            Bob            Carol
 //  aliceK
@@ -189,32 +212,8 @@ const bobKInv = beaverC.modInv(order).multiply(bobBeaverB).mod(order);
 assert(aliceK.add(bobK).modInv(order).value = aliceKInv.add(bobKInv).mod(order).value);
 
 
-console.log();
-
-
-//////////////
 //
-// unlock by alice and bob
-//
-//////////////
-
-console.log("[unlock by Alice and Bob]\n");
-
-//
-// 1, setting a message m (sighash in the case of BTC)
-//
-// Alice            Bob            Carol
-//  m       <->      m
-//
-const m = "Satoshi Nakamoto";
-const e = lsbToInt(m);
-console.log("message: " + m);
-console.log(e);
-
-
-
-//
-// 2, calcilating aliceShareDash and bobShareDash
+// 3, calcilating aliceShareDash and bobShareDash
 //
 //  aliceShareDash and bobShareDash are given by hand not Multiparty Secret Calculation in the first code for simplicity.
 //
@@ -238,7 +237,7 @@ assert(aliceShareDash.add(bobShareDash).mod(order).value
 
 
 //
-// 3, calculating r and s
+// 4, calculating r and s
 //
 // Alice            Bob            Carol
 //  aliceS           bobS
@@ -262,7 +261,7 @@ const s = aliceS.add(bobS).mod(order);
 
 
 //
-// 4, signature verification
+// 5, signature verification
 //
 
 const sig = {r: r.toString(16), s: s.toString(16)}; // DER format in the case of BTC
@@ -275,7 +274,7 @@ console.log(ec.keyFromPublic(multiPubkey).verify(lsbToStr(m), sig));
 
 
 //
-// 5, broadcast
+// 6, broadcast
 //
 
 console.log("Alice broadcasts tx with one '2 of 3' valid signature");
