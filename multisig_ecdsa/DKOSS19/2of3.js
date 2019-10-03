@@ -252,6 +252,7 @@ const r = bigInt(hDash(R).toString(16), 16).mod(order);
 
 // check that R is correct
 assert(R.x = ec.keyFromPrivate(aliceK.add(bobK).value.toString(16)).getPublic().x);
+assert(R.y = ec.keyFromPrivate(aliceK.add(bobK).value.toString(16)).getPublic().y);
 
 
 const aliceS = e.multiply(aliceKInv).add(r.multiply(aliceShareDash));
