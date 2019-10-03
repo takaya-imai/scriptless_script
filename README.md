@@ -8,6 +8,8 @@
 
 # Execution Example
 
+* aos_ring_signature.js
+
 ```
 $ node aos_ring_signature.js
 alicePubkey:
@@ -37,6 +39,8 @@ an order of pubkeys is different(cyclic). the signature is valid for this pubkey
 false
 ```
 
+* scriptless_script/multisig_ecdsa/GG18/alice-bob_2of3.js
+
 ```
 $ node scriptless_script/multisig_ecdsa/GG18/alice-bob_2of3.js
 [Dealer setups 2-of-3 multisig and send shares to Alice, Bob and Carol]
@@ -65,8 +69,10 @@ signature
 true
 ```
 
+* scriptless_script/multisig_ecdsa/DKOSS19/2of3.js
+
 ```
-$ node multisig_ecdsa_DKOSS19_2of3.js
+$ node scriptless_script/multisig_ecdsa/DKOSS19/2of3.js
 [Each players setups 2-of-3 multisig and send shares to Alice, Bob and Carol each other]
 
 alice share:
