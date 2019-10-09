@@ -285,6 +285,7 @@ console.log("Alice broadcasts tx with one '2 of 3' valid signature");
 
 
 // Beaver triple by hand in the first code
+// TODO: implement MPC
 function mul([a1, a2], [b1, b2]){
     let a = a1.add(a2);
     let b = b1.add(b2);
