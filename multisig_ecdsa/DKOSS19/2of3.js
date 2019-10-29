@@ -28,7 +28,7 @@ console.log("[Each players setups 2-of-3 multisig and send shares to Alice, Bob 
 
 
 //
-// generating dealer secret, dealerPrvkey
+// generating secrets
 //
 
 // Alice            Bob            Carol
