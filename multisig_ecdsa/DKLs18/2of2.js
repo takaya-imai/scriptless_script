@@ -42,13 +42,14 @@ console.log();
 // multisig public key
 //
 
-console.log("[Pay to the multi-sig addr]\n");
+console.log("[Pay to the multi-sig addr(multiplicative)]\n");
 
 // Alice            Bob
 //  alicePubkey ->
 //              <-   bobPubkey
 //
 // Diffie-Hellman key exchange
+//   multiplicative aggregated pubkey not additive
 //
 const alicePubkey = ec.keyFromPrivate(alicePrvkey.value.toString(16)).getPublic();
 const bobPubkey = ec.keyFromPrivate(bobPrvkey.value.toString(16)).getPublic();
@@ -77,10 +78,10 @@ console.log();
 //
 //////////////
 
-console.log("[unlock by Alice and Bob]\n");
+console.log("[unlock by Alice and Bob (multiplicative signature aggregation)]\n");
 
 //
-// 1, setting a message m (sighash in the case of BTC)
+// setting a message m (sighash in the case of BTC)
 //
 // Alice            Bob
 //  m       <->      m
@@ -95,6 +96,22 @@ console.log(e);
 //
 // Multiplication and Instance Key Exchange
 //
+//   multiplicative signnature aggregation not addtive
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // 
@@ -151,6 +168,18 @@ const [t1A, t1B] = mul(alicePhi.add(aliceK.modInv(order)), bobK.modInv(order));
 const [t2A, t2B] = mul(alicePrvkey.multiply(aliceK.modInv(order)), bobPrvkey.multiply(bobK.modInv(order)));
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // 2.6, Alice opens RDash and Bob calculates R
 //
 // Alice            Bob
@@ -168,6 +197,7 @@ assert(aliceR.getY().toString() == bobR.getY().toString());
 
 
 
+//////////////
 //
 // Consistency Check, Signature and Verification
 //
