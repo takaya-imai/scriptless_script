@@ -4,13 +4,13 @@
     * 2of2
         * nothing
     * 2of3
-        * shamir secret sharing
+        * additive
 * multisig pubkey
     * 2of2
         * multiplicative
     * 2of3
         * additive
-* aggregated signature
+* k
     * 2of2
         * multiplicative
     * 2of3
