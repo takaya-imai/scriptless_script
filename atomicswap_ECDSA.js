@@ -7,6 +7,14 @@ const bigInt = require('big-integer');
 const assert = require('assert');
 
 
+//
+// Scriptless Scripts with ECDSA
+//   https://lists.linuxfoundation.org/pipermail/lightning-dev/attachments/20180426/fe978423/attachment-0001.pdf
+//
+// Ref.
+//   https://lists.linuxfoundation.org/pipermail/lightning-dev/2018-April/001221.html
+//   https://techmedia-think.hatenablog.com/entry/2018/05/03/145452
+//
 
 
 //////////////
